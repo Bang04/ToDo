@@ -1,15 +1,21 @@
 import React from "react"
+import CheckeBox from "./Checkbox";
+import './style.module.css';
 
-function TodoItem({idx, text, checked, handlerDelete}){
+function TodoItem({idx, text, checked, onChangeBox , handlerDelete}){
 
     return (
-      <div key={idx} className='card' >
+      <div key={idx} className='item' >
         <span>{idx}</span>
-        <input type="checkbox" id="state" name="state" className="checkbox"  checked={checked} />
-        <label for="state"><span>{text}</span></label>
-        <div className='buttons'>
-          <button onClick={() => handlerDelete(idx)} className="button is-small is-danger is-rounded" type='button'>삭제</button>
-        </div>
+
+        <CheckeBox
+            checked = {checked} 
+            onChangeBox = {onChangeBox}
+            idx = {idx}
+        />
+
+        <span className="text has-text-grey-dark">{text}</span>
+        <button onClick={() => handlerDelete(idx)} className="delete is-medium" type='button'></button>
       </div>
     );
 }

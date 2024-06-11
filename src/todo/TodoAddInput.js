@@ -1,24 +1,25 @@
 import React, { useCallback } from "react"
+import 'bulma/css/bulma.css'
 
-function TodoAddInput( { inputText, setInputText, handlerAdd}){
+function TodoAddInput( { inputText, setInputText, handlerSubmit}){
 
     const handlerChange = useCallback((e) => {
         setInputText(e.target.value);
     } , []);
 
     return(
-        <div>
-            <form name="frm" method="post">
+        <div className="section">
+            <form name="frm" method="post" onSubmit={handlerSubmit}>
+            
                 <input
-                    type="text" 
-                    naem= "text" 
-                    className="text"
+                    type="text"
+                    className="text is-normal is-success"
                     placeholder="입력해주세요"
                     value={ inputText }
-                    onChange={handlerChange} 
+                    onChange={ handlerChange } 
                   />
-                <button onClick={() => {handlerAdd()}} type="button" className="button" name="submit">등록</button>
-                {/* <button type="submit" className="submit" name="submit">등록</button> */}
+                <button type="submit" className="submit" name="submit">Add</button>
+               
             </form>
         </div>
     )

@@ -1,17 +1,19 @@
 import React from 'react'; 
 import TodoItem from './TodoItem';
 
-import './TodoList.module.css';
+import './style.module.css';
 import 'bulma/css/bulma.css'
 
-function TodoList({ todos, handlerDelete }) {
+function TodoList({ todos, handlerDelete , onChangeBox}) {
   return (
-    <div>
-       {todos && todos.map((todo) =>(
+    <div className='item-list'>
+       {todos && todos.map((todo, index) =>(
           <TodoItem 
+            key={index}
             idx = { todo.idx}
             text = {todo.text}
             checked = {todo.checked}
+            onChangeBox = {onChangeBox}
             handlerDelete = {handlerDelete}
           />
         ))}
