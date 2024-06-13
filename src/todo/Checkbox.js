@@ -1,13 +1,14 @@
 import React from "react"
-const CheckeBox = ({checked ,onChangeBox, idx}) => {
+const CheckeBox = (props) => {
     return(
+        <label className="state-button">
         <input 
-            onChange={(e) => onChangeBox(e.target.value, idx)} 
             type="checkbox" 
-            name="state" 
             className="checkbox is-medium" 
-            defaultChecked = {checked} 
+            checked = {props.status}
+            onChange={props.handlerCheckStatus} 
     />
+    </label>
     )
 }
 

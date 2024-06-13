@@ -4,16 +4,16 @@ import TodoItem from './TodoItem';
 import './style.module.css';
 import 'bulma/css/bulma.css'
 
-function TodoList({ todos, handlerDelete , onChangeBox}) {
+function TodoList({ todos, handlerDelete , handlerCheckStatus}) {
   return (
     <div className='item-list'>
        {todos && todos.map((todo, index) =>(
           <TodoItem 
             key={index}
-            idx = { todo.idx}
+            id = { todo.id}
             text = {todo.text}
-            checked = {todo.checked}
-            onChangeBox = {onChangeBox}
+            status = {todo.status}
+            handlerCheckStatus = {handlerCheckStatus}
             handlerDelete = {handlerDelete}
           />
         ))}
