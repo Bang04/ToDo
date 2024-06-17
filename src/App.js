@@ -13,12 +13,12 @@ function App(){
     {
       id: 1,
       text: "리액트의 기초 알아보기",
-      status: true,
+      status: false,
     },
     {
       id: 2,
       text: "컴포넌트 스타일링해 보기",
-      status: true,
+      status: false,
     },
     {
       id: 3,
@@ -36,11 +36,11 @@ function App(){
     }, {
       id: 6,
       text: "기술면접 질문 준비하기 3개",
-      status: true,
+      status: false,
     }, {
       id: 7,
       text: "렌더링 과정 설명하기",
-      status: true,
+      status: false,
     }, {
       id: 8,
       text: "리액트 훅 강의 듣기",
@@ -69,11 +69,14 @@ function App(){
 
   const [checkbox , setChecbox] = useState(false);
 
-  const handlerCheckStatus = ( checked, id ) => {
-    setChecbox(!checked);
-    todos.map((item) => 
-      item.id === id ? {...item, status : checkbox} : item
-    )
+  const handlerCheckStatus = ( { target } ) => {
+    const _todos = todos.map(todo => {
+      if(todo.id == target.id){
+        todo.status = target.checked
+      }
+      return todo;
+    });
+    setTodos(_todos);
   };
 
   return(

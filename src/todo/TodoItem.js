@@ -3,7 +3,7 @@ import CheckeBox from "./Checkbox";
 import './style.module.css';
 
 function TodoItem({id, text, status, handlerCheckStatus , handlerDelete}){
-
+    
     return (
       <div key={id} className='item' >
         <span>{id}</span>
