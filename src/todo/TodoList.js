@@ -1,19 +1,20 @@
 import React from 'react'; 
 import TodoItem from './TodoItem';
 
-import './style.module.css';
-import 'bulma/css/bulma.css'
+import classes from './style.module.css';
 
-function TodoList({ todos, handlerDelete , handlerCheckStatus}) {
+function TodoList({ todos, handlerStatus, handlerDelete}) {
+  console.log(todos);
   return (
-    <div className='item-list'>
+    <div className={classes.list}>
+     
        {todos && todos.map((todo, index) =>(
-          <TodoItem 
-            key={index}
-            id = { todo.id}
+          <TodoItem
+            id={todo.id}
+            num={index}
             text = {todo.text}
             status = {todo.status}
-            handlerCheckStatus = {handlerCheckStatus}
+            handlerStatus = {handlerStatus}
             handlerDelete = {handlerDelete}
           />
         ))}

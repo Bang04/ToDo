@@ -1,27 +1,91 @@
-.App {
+body{
+  background-color: #ddd;
+}
+.container{
+  position: relative;
+  width: 100%;
   text-align: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.container_layout{
+  position: relative;
+  max-width: 400px;
+  min-width: 320px;
+  margin: 0 auto;
+  margin-top: 2rem;
+
+
+}
+.title{
+  font-size: 1.5rem;
+}
+.content{
+  position: relative;
+  padding: 1rem 2rem;
+  background-color: #fff;
+}
+
+.input_frm{
+  position: relative;
+  width: 100%;
+  padding: 20px 0 10px;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+
+}
+.input_frm input{ 
+  line-height: 30px;
+  height: 30px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+.input_frm  button{
+  position: relative;
+  border: 0;
+  border-radius: 10px;
+  width: 30px;
+  height: 30px;
+  /* padding: 8px 12px; */
+  display: inline-block;
+  text-align: center;
+  color: white;
+
+}
+.btn1{background-color: #7fb1bf;box-shadow: 0px 4px #74a3b0;}
+.btn1:active {box-shadow: 0 0 #74a3b0; background-color: #709CA8;  top: 4px; }
+
+/* .btn2 {padding: 3px 8px; background-color: #fa5a5a; margin-left: 5px;}
+.btn2:active {box-shadow: 0 0 #ff4c4b; background-color: #ff4c4b;} */
+
+.list{
+  position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-wrap: nowrap;
+  align-items: flex-start;
 }
 
-.App-link {
-  color: #61dafb;
+.list_item{
+  line-height: 30px;
+  height: 30px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.list_item span.index{ font-size: 20px;}
+/* 
+.checkbox{
+  font-size: 1em;
+  width: 1.25em; 
+  height: 1.25em; 
+  vertical-align: sub;
+  margin:  0 10px;
 }
+
+.checkbox::after{
+  background-color:#F47C7C;
+  border-color:#F47C7C;
+
+} */

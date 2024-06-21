@@ -1,16 +1,18 @@
 import React from "react"
+//import 'bulma/css/bulma.css'
+import classes from './style.module.css';
+
 const CheckeBox = (props) => {
 
     return(
-        <label className="state-button">
-        <input 
+         <input 
             id={props.id}
             type="checkbox" 
             checked={props.status}
-            className="checkbox is-medium" 
-            onChange={props.handlerCheckStatus} 
-    />
-    </label>
+            className={classes.checkbox} 
+            onChange={props.handlerStatus} 
+        />
+       
     )
 }
 

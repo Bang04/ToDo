@@ -1,21 +1,21 @@
 import React from "react"
 import CheckeBox from "./Checkbox";
-import './style.module.css';
+import classes from './style.module.css';
 
-function TodoItem({id, text, status, handlerCheckStatus , handlerDelete}){
-    
-    return (
-      <div key={id} className='item' >
-        <span>{id}</span>
+//import 'bulma/css/bulma.css'
 
-        <CheckeBox
+function TodoItem({id, num,text, status ,handlerStatus, handlerDelete}){
+
+ return (
+      <div className={classes.list_item} >
+        <span className={classes.index}>{num}</span>
+        <CheckeBox 
             id = {id}
-            status = {status} 
-            handlerCheckStatus = {handlerCheckStatus}
-        />
-
-        <span className="text has-text-grey-dark">{text}</span>
-        <button onClick={() => handlerDelete(id)} className="delete is-medium" type='button'></button>
+            status = {status ? true : false}
+            handlerStatus = { handlerStatus } 
+          /> 
+        <span className={classes.subtitle}>{text}</span>
+        <button type="button" onClick={ handlerDelete }  id={id} className={classes.btn2} >x</button>
       </div>
     );
 }

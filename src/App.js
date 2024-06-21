@@ -1,15 +1,13 @@
-import React, { useCallback, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import TodoTemplate from "./todo/TodoTemplate"
 import TodoList from "./todo/TodoList"
-import TodoAddInput from "./todo/TodoAddInput";
-
-import 'bulma/css/bulma.css'
-
+import TodoAddFrom from "./todo/TodoAddFrom";
+import { v4 as uuidv4 } from 'uuid';
 
 function App(){
 
   const [inputText, setInputText] = useState('');
-  const [todos , setTodos] =  useState([
+  const [todos2 , setTodos2] =  useState([
     {
       id: 1,
       text: "리액트의 기초 알아보기",
@@ -47,41 +45,53 @@ function App(){
       status: false,
     },
   ]);
+  const [todos , setTodos] =  useState([]);
 
-  const [todos3 , setTodos3] =  useState([]);
   const nextNo = useRef(9);
   const onChange = (e) => {
     setInputText(e.target.vaue);
   }
+
   const handlerSubmit = (e) =>{
     e.preventDefault();
+    if(inputText.length > 0 && inputText !== undefined){
       setTodos([...todos, {
-        id: nextNo.current += 1,
-        text : inputText,
-        status : false
+          id: uuidv4(),
+          text : inputText,
+          status : false
+        }
+      ]);
+    }else{
+      alert("할일은 입력해주세요");
+      return false;
     }
-  ]);
+     
       setInputText('');
   }
-  const handlerDelete = (id) => {
-    setTodos(todos.filter(todo => todo.id !== id));
+  const handlerDelete = ({target}) => {
+    setTodos(todos.filter(todo => todo.id !== target.id));
   }
 
-  const [checkbox , setChecbox] = useState(false);
-
-  const handlerCheckStatus = ( { target } ) => {
+  const handlerStatus = ({target}) => {
+    //console.log(target.id);
+    //setTodos(todos.map(todo =>
+    //   todo.id === target.id ? { status: !target.status } : target.status
+    //   )
+    // );
+console.log("ch : "+target.checked);
     const _todos = todos.map(todo => {
-      if(todo.id == target.id){
+      if(todo.id === target.id){
         todo.status = target.checked
       }
       return todo;
     });
+
     setTodos(_todos);
   };
 
   return(
         <TodoTemplate >
-          <TodoAddInput 
+          <TodoAddFrom
             inputText = {inputText}
             setInputText = {setInputText}
             onChange = {onChange}
@@ -89,7 +99,7 @@ function App(){
           />
           <TodoList 
             todos = {todos} 
-            handlerCheckStatus = {handlerCheckStatus}
+            handlerStatus = {handlerStatus}
             handlerDelete = {handlerDelete}/>
         </TodoTemplate>
         
